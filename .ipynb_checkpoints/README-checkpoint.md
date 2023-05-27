@@ -9,7 +9,7 @@ The SVC model, providing our baseline performance, results in the following metr
 - Short precision: **0.43**
 - Short recall: **0.04**
 
-![Actual Returns vs. Strategy Returns](Resources/actual_vs_strategy_returns.png)
+![Actual Returns vs. Strategy Returns](Resources/actual_vs_strategy_returns_baseline.png)
 
 With regard to cumulative products, in 2015, strategy returns exceeded actual returns. In early 2016, strategy returns deviated from actual returns, underperforming until 2018. From 2018 until mid-2020, strategy returns matched actual returns, but then deviated again. Overall, strategy returns have greatly underperformed compared to actual returns.
 
