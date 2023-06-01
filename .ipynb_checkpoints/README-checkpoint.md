@@ -4,7 +4,7 @@ Module 14 Challenge: Machine Learning Trading Bot
 ## Establish a Baseline Performance
 The SVC model, providing our baseline performance, results in the following metrics:
 
-| ---------- | Accuracy | Long precision | Long recall | Short precision | Short recall |
+|            | Accuracy | Long precision | Long recall | Short precision | Short recall |
 |:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
 | **Result** | 0.55     | 0.56           | 0.96        | 0.43            | 0.04         |
 
@@ -26,11 +26,10 @@ Concerning the classification reports generated for the machine-learning models,
 ![Actual Returns vs. Strategy Returns - 24-Month Training](Resources/actual_vs_strategy_returns_24M.png)
 
 Given the above analysis, a 24-month training window seems optimal. While the optimal difference in cumulative products was found at the 33-month training window, the model had predicted no short signals (`-1`), thereby forcing a short precision and short recall of 0.00. Providing our original SVC model with a 24-month training window results in the following metrics:
-- Accuracy: **0.55**
-- Long precision: **0.56**
-- Long recall: **1.00**
-- Short precision: **0.80**
-- Short recall: **0.00**
+
+|            | Accuracy | Long precision | Long recall | Short precision | Short recall |
+|:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
+| **Result** | 0.55     | 0.56           | 1.00        | 0.80            | 0.00         |
 
 ### Question: What impact resulted from increasing or decreasing either or both of the SMA windows?
 ![Metrics Comparison for Various SMA Combinations](Resources/metrics_comparison_sma.png)
@@ -44,11 +43,10 @@ Concerning the classification reports generated for the machine-learning models,
 ![Actual Returns vs. Strategy Returns - SMA 48-730](Resources/actual_vs_strategy_returns_sma_16-140.png)
 
 Given the above analysis, a fast-slow SMA combination of 16-140 seems optimal. Providing our original SVC model with 48-600 SMA combination results in the following metrics:
-- Accuracy: **0.56**
-- Long precision: **0.56**
-- Long recall: **0.99**
-- Short precision: **0.52**
-- Short recall: **0.01**
+
+|            | Accuracy | Long precision | Long recall | Short precision | Short recall |
+|:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
+| **Result** | 0.56     | 0.56           | 0.99        | 0.52            | 0.01         |
 
 ### Conclusion
 ![Actual Returns vs. Strategy Returns - Tuned](Resources/actual_vs_strategy_returns_tuned.png)
@@ -56,11 +54,10 @@ Given the above analysis, a fast-slow SMA combination of 16-140 seems optimal. P
 Using a training period of 24 months and SMA windows of 16 (fast) and 140 (slow), the cumulative product of strategy returns closely matches the cumulative product of actual returns, over-performing the latter for much of the testing period and only deviating for the last few months.
 
 The classification report for the model provides the following metrics:
-- Accuracy: **0.56**
-- Long precision: **0.56**
-- Long recall: **1.00**
-- Short precision: **1.00**
-- Short recall: **0.00**
+
+|            | Accuracy | Long precision | Long recall | Short precision | Short recall |
+|:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
+| **Result** | 0.56     | 0.56           | 1.00        | 1.00            | 0.00         |
 
 ## Evaluate a New Machine Learning Classifier
 
@@ -68,11 +65,10 @@ The classification report for the model provides the following metrics:
 ![Actual Returns vs. Strategy Returns - AdaBoost Classifier](Resources/actual_vs_strategy_returns_adaboostclassifier.png)
 
 The new machine-learning classifier utilized was an AdaBoost classifier. The classification report for the model provides the following metrics:
-- Accuracy: **0.55**
-- Long precision: **0.56**
-- Long recall: **0.92**
-- Short precision: **0.44**
-- Short recall: **0.08**
+
+|            | Accuracy | Long precision | Long recall | Short precision | Short recall |
+|:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
+| **Result** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
 
 ### Question: Did this new model perform better or worse than the provided baseline model?
 **Answer:**
@@ -88,8 +84,15 @@ Overall, the new model did not perform quite as well as the tuned trading algori
 ![Actual Returns vs. Strategy Returns - Tuned](Resources/actual_vs_strategy_returns_tuned.png)
 ![Actual Returns vs. Strategy Returns - AdaBoost Classifier](Resources/actual_vs_strategy_returns_adaboostclassifier.png)
 
+| Model                   | Accuracy | Long precision | Long recall | Short precision | Short recall |
+|:----------------------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
+| **Baseline**            | 0.55     | 0.56           | 0.96        | 0.43            | 0.04         |
+| **Tuned**               | 0.56     | 0.56           | 1.00        | 1.00            | 0.00         |
+| **AdaBoost Classifier** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
+
+
 | Metric              | Baseline model | Tuned model | AdaBoost model |
-|:---                 | ---            | ---         | ---            |
+|:------------------- |:--------------:|:-----------:|:--------------:|
 | **Accuracy**        | 0.55           | 0.56        | 0.55           |
 | **Long precision**  | 0.56           | 0.56        | 0.56           |
 | **Long recall**     | 0.96           | 1.00        | 0.92           |
