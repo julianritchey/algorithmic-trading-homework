@@ -4,7 +4,7 @@ Module 14 Challenge: Machine Learning Trading Bot
 ## Establish a Baseline Performance
 The SVC model, providing our baseline performance, results in the following metrics:
 
-| ---        | Accuracy | Long precision | Long recall | Short precision | Short recall |
+| ---------- | Accuracy | Long precision | Long recall | Short precision | Short recall |
 |:---        |:---     :|:---           :|:---        :|:---            :|:---         :|
 | **Result** | 0.55     | 0.56           | 0.96        | 0.43            | 0.04         |
 
