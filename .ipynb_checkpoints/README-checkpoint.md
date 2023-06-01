@@ -82,7 +82,7 @@ The new model performed nearly identically to the provided baseline model. The c
 ### Did this new model perform better or worse than your tuned trading algorithm?
 **Answer:**
 
-Overall, the new model did not perform quite as well as the tuned trading algorithm. The plotted strategy returns appear to move identically. Regarding metrics from the classification report, long precision was identical, but there were decreases in accuracy of 0.01, long recall of 0.08 and short precision 0f 0.56; the only increase was short recall by 0.08.
+Overall, the new model did not perform quite as well as the tuned trading algorithm. The plotted cumulative product of strategy returns appears to move identically, varying only in value, likely due to the shorer window of time. Regarding metrics from the classification report, long precision was identical, but there were decreases in accuracy of 0.01, long recall of 0.08 and short precision 0f 0.56; the only increase was short recall by 0.08.
 
 ## Summary Evaluation Report
 The plots previously generated to display cumulative products of strategy returns against the cumulative product of actual returns depict differing windows of time. The plots, therefore, should not be used for the direct comparison of the models they represent. For proper comparison, the following plots have been generated using the same window of time.
@@ -91,7 +91,7 @@ The plots previously generated to display cumulative products of strategy return
 ![Actual Returns vs. Strategy Returns - Tuned](Resources/actual_vs_strategy_returns_tuned.png)
 ![Actual Returns vs. Strategy Returns - AdaBoost Classifier](Resources/actual_vs_strategy_returns_adaboostclassifier_zoomed.png)
 
-In the above plots, it can be observed that there appears to be no difference in strategy returns between all three models. This may imply that, despite minor differences between the models, each model provided the same&mdash;or very similar&mdash;trade signals. For a better comparison of the models, the metrics from the classification reports should be analyzed:
+In the above plots, it can be observed that there appears to be no difference in strategy returns between all three models. This may imply that, despite minor differences between the models, each model provided the same&mdash;or very similar&mdash;trade signals. For a better comparison of the models, the metrics from the classification reports should be analyzed.
 
 | Model                   | Accuracy | Long precision | Long recall | Short precision | Short recall |
 |:----------------------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
@@ -99,4 +99,6 @@ In the above plots, it can be observed that there appears to be no difference in
 | **Tuned**               | 0.56     | 0.56           | 1.00        | 1.00            | 0.00         |
 | **AdaBoost Classifier** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
 
-The metrics from the classification reports provide clarity to the subtle differences between the models. Compared to the baseline model, the AdaBoost Classifier (ABC) model performed nearly identically, though the tuned model appears to have performed better. While the ABC model out-performed the tuned model in short recall, the tuned model out-performed the ABC model in accuracy, long recall and short precision. All models scored the same for long precision.
+The metrics from the classification reports provide clarity to the subtle differences between the models. Compared to the baseline model, the AdaBoost classifier (ABC) model performed nearly identically, though the tuned model appears to have performed better. While the ABC model out-performed the tuned model in short recall, the tuned model out-performed the ABC model in accuracy, long recall and short precision. All models scored the same for long precision.
+
+Overall, the tuned model performed the best of the three models.
