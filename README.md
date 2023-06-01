@@ -102,3 +102,9 @@ In the above plots, it can be observed that there appears to be no difference in
 The metrics from the classification reports provide clarity to the subtle differences between the models. Compared to the baseline model, the AdaBoost classifier (ABC) model performed nearly identically, though the tuned model appears to have performed better. While the ABC model out-performed the tuned model in short recall, the tuned model out-performed the ABC model in accuracy, long recall and short precision. All models scored the same for long precision.
 
 Overall, the tuned model performed the best of the three models.
+
+## Other information
+- All work for the baseline model and AdaBoost classifier model can be found in the [machine_learning_trading_bot.ipynb](https://github.com/julianritchey/algorithmic-trading-homework/blob/main/machine_learning_trading_bot.ipynb) file.
+- All work for the tuned model can be found in the [machine_learning_trading_bot_tuned_model.ipynb](https://github.com/julianritchey/algorithmic-trading-homework/blob/main/machine_learning_trading_bot_tuned_model.ipynb) file.
+- All work relating to tuning of the baseline model can be found in the [metrics_calculations.ipynb](https://github.com/julianritchey/algorithmic-trading-homework/blob/main/metrics_calculations.ipynb) file.
+- All data used and plots generated in this assignment can be found in the [Resources](https://github.com/julianritchey/algorithmic-trading-homework/tree/main/Resources) folder.
