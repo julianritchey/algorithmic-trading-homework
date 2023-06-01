@@ -14,7 +14,8 @@ With regard to cumulative products, in 2015, strategy returns exceeded actual re
 
 ## Tune the Baseline Trading Algorithm
 
-### Question: What impact resulted from increasing or decreasing the training window?
+### Question:
+### What impact resulted from increasing or decreasing the training window?
 ![Metrics Comparison for Various Training Periods](Resources/metrics_comparison_training.png)
 
 **Answer:**
@@ -31,18 +32,19 @@ Given the above analysis, a 24-month training window seems optimal. While the op
 |:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
 | **Result** | 0.55     | 0.56           | 1.00        | 0.80            | 0.00         |
 
-### Question: What impact resulted from increasing or decreasing either or both of the SMA windows?
+### Question:
+### What impact resulted from increasing or decreasing either or both of the SMA windows?
 ![Metrics Comparison for Various SMA Combinations](Resources/metrics_comparison_sma.png)
 
 **Answer:**
 
 With regard to the average difference between the culumative product of strategy returns and the cumulative product of actual returns, neither increasing nor decreasing the short-window (fast) SMA, relative to the long-window (slow) SMA, had any effect on the cumulative product of strategy returns over the baseline 4-100 (fast-slow) SMA combination. Decreasing the slow SMA made for minor improvement in the difference. While increasing the slow SMA initially increased the difference, continuing to increase the slow SMA beyond 400 showed steady reduction of the difference.
 
-Concerning the classification reports generated for the machine-learning models, accuracy and long precision remained rather constant across all SMA combinations, with the exception of a few dips in accuracy that aligned with dips in long recall. Long recall remained fairly steady above 0.080, though did witness a few extreme dips below 0.10. Short recall was always in opposition to long recall, spiking whenever long recall dipped. Short precision is the only metric that seemed to fluctuate independently. 
+Concerning the classification reports generated for the machine-learning models, accuracy and long precision remained rather constant across all SMA combinations, with the exception of a few dips in accuracy that aligned with dips in long recall. Long recall remained fairly steady above 0.080, though did witness a few extreme dips below 0.10. Short recall was always in opposition to long recall, spiking whenever long recall dipped. Short precision is the only metric that seemed to fluctuate somewhat independently. 
 
 ![Actual Returns vs. Strategy Returns - SMA 48-730](Resources/actual_vs_strategy_returns_sma_16-140.png)
 
-Given the above analysis, a fast-slow SMA combination of 16-140 seems optimal. Providing our original SVC model with 48-600 SMA combination results in the following metrics:
+Given the above analysis, a fast-slow SMA combination of 16-140 seems optimal. While other SMA combinations provided more desirable differences in cumulative products, the 16-140 SMA combination provided better overall metrics. Providing our original SVC model with 16-140 SMA combination results in the following metrics:
 
 |            | Accuracy | Long precision | Long recall | Short precision | Short recall |
 |:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
@@ -51,9 +53,9 @@ Given the above analysis, a fast-slow SMA combination of 16-140 seems optimal. P
 ### Conclusion
 ![Actual Returns vs. Strategy Returns - Tuned](Resources/actual_vs_strategy_returns_tuned.png)
 
-Using a training period of 24 months and SMA windows of 16 (fast) and 140 (slow), the cumulative product of strategy returns closely matches the cumulative product of actual returns, over-performing the latter for much of the testing period and only deviating for the last few months.
+Using a training period of 24 months and SMA windows of 16 (fast) and 140 (slow), the cumulative product of strategy returns closely matches the cumulative product of actual returns. Strategy returns initially deviate during the latter half of 2017, then begin to out-perform actual returns from mid-2019 through mid-2020. In the latter half of 2020, strategy returns deviate once again. While the above plot appears to show an improvement in strategy returns over the baseline model, bear in mind that, due to the longer training window, the plot reflects a smaller window of returns. Metrics from the classification report should be taken into account for a proper analysis. (See the [Summary Evaluation Report](https://github.com/julianritchey/algorithmic-trading-homework#summary-evaluation-report) for a more thorough analysis)
 
-The classification report for the model provides the following metrics:
+The classification report for the tuned model provides the following metrics:
 
 |            | Accuracy | Long precision | Long recall | Short precision | Short recall |
 |:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
@@ -70,19 +72,26 @@ The new machine-learning classifier utilized was an AdaBoost classifier. The cla
 |:---------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
 | **Result** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
 
-### Question: Did this new model perform better or worse than the provided baseline model?
+### Question:
+### Did this new model perform better or worse than the provided baseline model?
 **Answer:**
 
-The new model performed nearly identically to the provided baseline model. There were no changes in accuracy, long precision or cumulative product of strategy returns. Short precision increased by 0.01 and short recall increased by 0.04, but long recall decreased by 0.04.
+The new model performed nearly identically to the provided baseline model. The cumulative product of strategy returns appears identical. Regarding metrics from the classification report, there were no changes in accuracy, long precision or cumulative product of strategy returns; short precision increased by 0.01 and short recall increased by 0.04, but long recall decreased by 0.04.
 
-### Question: Did this new model perform better or worse than your tuned trading algorithm?
+### Question:
+### Did this new model perform better or worse than your tuned trading algorithm?
 **Answer:**
-Overall, the new model did not perform quite as well as the tuned trading algorithm. 
+
+Overall, the new model did not perform quite as well as the tuned trading algorithm. The plotted strategy returns appear to move identically. Regarding metrics from the classification report, long precision was identical, but there were decreases in accuracy of 0.01, long recall of 0.08 and short precision 0f 0.56; the only increase was short recall by 0.08.
 
 ## Summary Evaluation Report
-![Actual Returns vs. Strategy Returns - Baseline](Resources/actual_vs_strategy_returns_baseline.png)
+The plots previously generated to display cumulative products of strategy returns against the cumulative product of actual returns depict differing windows of time. The plots, therefore, should not be used for the direct comparison of the models they represent. For proper comparison, the following plots have been generated using the same window of time.
+
+![Actual Returns vs. Strategy Returns - Baseline](Resources/actual_vs_strategy_returns_baseline_zoomed.png)
 ![Actual Returns vs. Strategy Returns - Tuned](Resources/actual_vs_strategy_returns_tuned.png)
-![Actual Returns vs. Strategy Returns - AdaBoost Classifier](Resources/actual_vs_strategy_returns_adaboostclassifier.png)
+![Actual Returns vs. Strategy Returns - AdaBoost Classifier](Resources/actual_vs_strategy_returns_adaboostclassifier_zoomed.png)
+
+In the above plots, it can be observed that there appears to be no difference in strategy returns between all three models. This may imply that, despite minor differences between the models, each model provided the same&mdash;or very similar&mdash;trade signals. For a better comparison of the models, the metrics from the classification reports should be analyzed:
 
 | Model                   | Accuracy | Long precision | Long recall | Short precision | Short recall |
 |:----------------------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
@@ -90,3 +99,4 @@ Overall, the new model did not perform quite as well as the tuned trading algori
 | **Tuned**               | 0.56     | 0.56           | 1.00        | 1.00            | 0.00         |
 | **AdaBoost Classifier** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
 
+The metrics from the classification reports provide clarity to the subtle differences between the models. Compared to the baseline model, the AdaBoost Classifier (ABC) model performed nearly identically, though the tuned model appears to have performed better. While the ABC model out-performed the tuned model in short recall, the tuned model out-performed the ABC model in accuracy, long recall and short precision. All models scored the same for long precision.
