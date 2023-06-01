@@ -97,7 +97,7 @@ In the above plots, it can be observed that there appears to be no difference in
 |:----------------------- |:--------:|:--------------:|:-----------:|:---------------:|:------------:|
 | **Baseline**            | 0.55     | 0.56           | 0.96        | 0.43            | 0.04         |
 | **Tuned**               | 0.56     | 0.56           | 1.00        | 1.00            | 0.00         |
-| **AdaBoost Classifier** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
+| **AdaBoost classifier** | 0.55     | 0.56           | 0.92        | 0.44            | 0.08         |
 
 The metrics from the classification reports provide clarity to the subtle differences between the models. Compared to the baseline model, the AdaBoost classifier (ABC) model performed nearly identically, though the tuned model appears to have performed better. While the ABC model out-performed the tuned model in short recall, the tuned model out-performed the ABC model in accuracy, long recall and short precision. All models scored the same for long precision.
 
